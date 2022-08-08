@@ -1,0 +1,49 @@
+- while passing reference(address) in parameter the related function should use * infornt of the parameter, & should be used in the function where it is passed from.
+  if arugument or value need to be scaned &* is used.
+
+for eg:
+int main()
+{
+	mMenu(&logStatus, &optGot);
+}
+
+void mMenu (bool *logStat, int *optGot){
+	scanf("%d", &*optGot);
+	if(*optGot==0){
+		*logStat=false;
+	}
+}
+
+- library must be included in only one function file. for eg: if included in main function, it must not be included in sub functions.
+
+
+- to set the coordinates for printf:
+#include<windows.h>
+COORD c = {0, 0};
+
+void setxy (int x, int y)
+{
+ c.X = x; c.Y = y;
+ SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
+}
+
+void main()
+{
+	setxy (10, 5); //setting x and y coordinates
+	printf("****");
+}
+
+- to set the required length of variables while printing
+printf("\n\t| %-7d| %-27s| %-9d| %-11.2f| %-11.2f|\n", pCode, pName, pQty, pCP, pSP);
+
+-fwrite/fread function:
+    struct person input1 = {1, "rohan", "sharma"};
+    struct person input2 = {2, "mahendra", "dhoni"};
+     
+    // write struct to file
+    fwrite (&input1, sizeof(struct person), 1, outfile);
+    fwrite (&input2, sizeof(struct person), 1, outfile);
+
+fread(&p, sizeof(struct product), 1, fp)
+
+Note: the file should be created as dat or have to be binary file.
